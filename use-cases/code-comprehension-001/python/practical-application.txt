@@ -1,0 +1,4 @@
+To implement the rule that tasks overdue for more than 7 days are marked as abondoned unliss high priority, I would update models.py to include an ABONDONED status and add logic in task_manager to check due dates and update task statuses.
+I'd ensure persistence in storage.py and optionally expose the rule through the CLI.
+Before implementing, I'd confirm with my team whether this process should run automatically and how users should be notified.
+This excercise strengthened my understanding of how domain logic connects to real business rules and how each layer of the codebase contributes to feature behaviour.
