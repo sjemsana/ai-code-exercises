@@ -1,0 +1,4 @@
+The Task class represents a single unit of work with attributes such as title, description, due date, priority, and status. 
+The enums TaskPriority and TaskStatus define business rules for urgency and workflow, ensuring consistent task categorization.
+The TaskManager class acts as a service layer that manages task lifecycles, while Storage handles persistence through JSON serialization.
+These components model how users create, update, and complete tasks in a structured workflow.
