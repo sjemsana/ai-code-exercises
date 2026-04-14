@@ -1,0 +1,4 @@
+To locate the code for the "get statistics" feature, I searched for keywords like statistics, get_statistics, and TaskManager across the project using the global search on VS Code.
+I focused on the task_manageer.py, clic.py, and storage.py directoried, which seemed most relevant to the logic and data flow.
+The feature is implemented in task_manager.py within the TaskManager class, where task counts are calculated by status, priority, and completion date.
+My next step is to trace how this method connects to the CLI and storage to understand the full feature flow.
