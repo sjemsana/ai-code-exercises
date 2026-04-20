@@ -1,0 +1,31 @@
+Excercise Part 1: Understanding a Specific Feature
+The task creation and status update feature in the TaskManager codebase connects the CLI, logic, and storage layers to manage task lifecycles.
+When a user runs a command like python cli.py add "Finish report", the CLI parses input and calls TaskManager.create_task(), which validates dates, assigns priority and status enums, creates a Task object, and saves it through the storage layer.
+The update_task_status() method retrieves a task by ID, converts the new status to an enum, and updates timestamps when marked as done.
+This flow demonstrates clear separation of concerns and domain-driven design.
+
+Excercise Part 2: Deepen Understanding Through Guided Questions
+    - Initial Understanding vs What I Discovered
+Initially, I understood that the TaskManager class handled task creation, listing, and status updates, connecting the CLI with the storage layer.
+I believed the logic was straightforward - user input triggers a method, which saves or updates tasks.
+Through guided questioning, I discovered that the flow is more nuanced: each method not only performs its own operation but also enforces validation and business rules.
+the create_task() method, for example, ensures proper date formatting and priority assignment before persistence, while list_tasks() dynamically filters tasks based on multiple conditions.
+
+    - Key Insights from Guided Questions
+Data moves through distinct layers: CLI -> TaskManager -> Storage -> Model. Each with a specific responsibility.
+Error handling (like the ValueError for invalid dates) prevents crashes and maintains user experience.
+The separationof overdue task logic into its own method (get_overdue_tasks) reflects thoughtful design for maintainability.
+Enums (TaskPriority, TaskStatus) are not just technical conveniences but enforce domain consistency.
+The code's modularity supports future extensions, such as recurring tasks or autoamted status updates.
+
+    - Misconceptions Clarified
+I initially thought the storage layer simply saved tasks, but I now see it also manages retrieval and filtering logic.
+I assumed filters in list_tasks() were applied simultaneously, but the conditional structure shows they're evaluated sequentially.
+Finally, I realized that the TaskManager doesn't just relay commands, it acts as the business logic controller, ensuring data integrity.
+
+    - Mapping Data flow
+- I traced the path from CLI input through the TaskManager logic, into the Task model, and finally to JSON persistence in storage.
+- State is managed by the TaskManager, which validates inputs and create Task objects, while storage handles serialization.
+- Transformations occur at each step: raw strings become structured argumanents, enums enforce consistency, and objects are converted to JSON.
+- Potential failures are handled with validation and error messages.
+- This excercise helped me visualize the complete flow, identify where state changes occur, and understand how to debug or extend the feature in the future.
